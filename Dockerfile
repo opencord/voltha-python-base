@@ -11,32 +11,32 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-FROM ubuntu:16.04
+FROM python:3.6.9-slim-buster
 
 # Update to have latest images
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        ca-certificates=20170717~16.04.2 \
-	python=2.7.12-1~16.04 \
-	openssl=1.0.2g-1ubuntu4.15 \
-	iproute2=4.3.0-1ubuntu3.16.04.5 \
-	libpcap-dev=1.7.4-2 \
-	wget=1.17.1-1ubuntu1.5 \
-	build-essential=12.1ubuntu2 \
-	git=1:2.7.4-0ubuntu1.6 \
-	binutils=2.26.1-1ubuntu1~16.04.8 \
-	python-dev=2.7.12-1~16.04 \
-	libffi-dev=3.2.1-4 \
-	libssl-dev=1.0.2g-1ubuntu4.15 \
+	ca-certificates=20190110 \
+	openssl=1.1.1d-0+deb10u2 \
+	iproute2=4.20.0-2 \
+	libpcap-dev=1.8.1-6 \
+	wget=1.20.1-1.1 \
+	build-essential=12.6 \
+	git=1:2.20.1-2 \
+	binutils=2.31.1-16 \
+	libffi-dev=3.2.1-9 \
+	libssl-dev=1.1.1d-0+deb10u2 \
+	librdkafka-dev=0.11.6-1.1 \
+	libzmq3-dev=4.3.1-4+deb10u1 \
+	libxml2-dev=2.9.4+dfsg1-7+b3 \
+	libxslt1-dev=1.1.32-2.2~deb10u1 \
+	pkg-config=0.29-6 \
+	python-pkgconfig=1.4.0-1 \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install current version of pip rather than outdated pip from apt
-RUN wget -O /tmp/get-pip.py https://bootstrap.pypa.io/get-pip.py
-RUN python /tmp/get-pip.py
-
-# Install adapter requirements.
+# Install adapter requirements. pip is included in python dockerhub images
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 # Label image
 ARG org_label_schema_version=unknown
