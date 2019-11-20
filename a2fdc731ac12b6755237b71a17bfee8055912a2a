@@ -1,0 +1,10 @@
+Verified+1: Jenkins Jenkins <do-not-reply@opencord.org>
+Code-Review+1: Zack Williams <zdw@opennetworking.org>
+Code-Review+1: Girish Gowdra <girish@opennetworking.org>
+Code-Review+1: Mahir Gunyel <mahir.gunyel@netsia.com>
+Code-Review+2: Matt Jeanneret <mj3580@att.com>
+Submitted-by: Matt Jeanneret <mj3580@att.com>
+Submitted-at: Wed, 20 Nov 2019 16:33:34 +0000
+Reviewed-on: https://gerrit.opencord.org/16309
+Project: voltha-python-base
+Branch: refs/heads/master
